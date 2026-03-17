@@ -1,0 +1,7 @@
+import ReducedBifurcationDemo.Defs
+import ReducedBifurcationDemo.Algebra
+import ReducedBifurcationDemo.Domain
+import ReducedBifurcationDemo.Calculus
+import ReducedBifurcationDemo.Bifurcation
+import ReducedBifurcationDemo.Symmetry
+import ReducedBifurcationDemo.NormalForm
