@@ -227,7 +227,7 @@ The Ising mapping from Notebooks 01–02 extends cleanly to the multi-factor mod
 | Ising / Curie–Weiss | Balance scale model | Developmental meaning |
 |---|---|---|
 | **Magnetisation m** | Rule II usage fraction (0 to 1) | How consistently the child uses the advanced rule |
-| **Inverse temperature β** | γ/2 (policy precision) | Cognitive decisiveness; how firmly the child commits |
+| **Inverse temperature β** | γ (policy precision) | Cognitive decisiveness; how firmly the child commits |
 | **Coupling J** | Learned discriminability difference between Rule I and Rule II, weighted by problem type frequencies | The self-reinforcing feedback: using Rule II → more evidence it works → stronger preference for Rule II |
 | **External field h** | Preference for correct outcomes × (Rule II advantage on hard items) | The built-in asymmetry: Rule II is objectively better on most items |
 | **Critical temperature T_c** | γ_c from the multi-factor coupling function | The threshold of cognitive decisiveness needed for a sharp transition |
