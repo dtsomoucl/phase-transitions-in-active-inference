@@ -9,6 +9,10 @@ This repository contains the code and dev-notebooks for modelling developmental 
 - `sim_balance_scale_appendix.py` - reduced model for the appendix (simpler, bridge-type)
 - `notebooks/` - mathematical derivation and simulation notebooks in Markdown
 - `third_party/pymdp/` - vendored local copy of `pymdp` used by the main implementation
+- `sim_bifurcation_novelty_appendix.py` - trial-level verification of model with added novelty (curiosity-bonus) term (Appendix A8)
+- `sim_robustness_appendixB7.py` - unscaffolded balance-scale robustness analysis (Appendix B7)
+- `sim_novelty_correction.R` - deterministic mean-field verification of the novelty-corrected condition
+- `sim_potts_extension.py` - illustrative Potts-style extension for Appendix C with four rules (Rule I, II, III, IV)
 
 ## Main model
 
@@ -55,6 +59,6 @@ Those main results (notebook 01) have been converted into Lean 4 (https://github
 * The notebooks are stored separately in notebooks/.
 
 ## Last review
-* 17 March 2026
+* 10 July 2026
 
 
