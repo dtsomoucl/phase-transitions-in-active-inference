@@ -214,7 +214,7 @@ def plot_potts_extension(config: PottsExtensionConfig | None = None) -> Path:
             ax.text(col, row, f"{summary['final_learned'][row, col]:.2f}", ha="center", va="center", color="white", fontsize=8)
     fig.colorbar(heat, ax=ax, fraction=0.046, pad=0.04)
 
-    fig.suptitle("Appendix Figure B1. Potts-style four-rule extension", fontsize=14, y=0.98)
+    fig.suptitle("Appendix Figure C1. Potts-style four-rule extension", fontsize=14, y=0.98)
     fig.tight_layout(rect=[0, 0, 1, 0.96])
     out_path = OUT_DIR / "fig_potts_extension.png"
     fig.savefig(out_path, dpi=200)
