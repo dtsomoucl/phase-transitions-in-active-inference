@@ -5,22 +5,21 @@ Companion to `sim_bifurcation.py` (Notebook 02) and Notebook 05.
 
 This script reruns ONLY the two population figures of the minimal model —
 the five catastrophe flags (manuscript Figure 2) and the analytical-vs-
-simulation verification sweeps (manuscript Figure 3a/b) — with the EXACT
+simulation verification sweeps (manuscript Figure 3a/b) — with the approximate
 Dirichlet parameter information-gain ("novelty") term of Notebook 05
 switched on in the trial-level stochastic agent.
 
-Implementation note (exactness). `run_single_agent` in `sim_bifurcation.py`
+Implementation note -- `run_single_agent` in `sim_bifurcation.py`
 already contains an epistemic option:
     epistemic_diff = w * (1/n2_total - 1/n1_total),
 with n_k_total = alpha_0 + n_k (prior included). Notebook 05 (Eq. 3) shows
-the exact novelty term for a two-outcome Dirichlet column is
+the approx novelty term for a two-outcome Dirichlet column is
     W(pi_k) = 1 / (2 (alpha_0 + n_k)),
-so the exact extension of the EFE difference is
+so the extension of the EFE difference is
     Delta G -> Delta G - Delta W = Delta G + (1/2) (1/n2_total - 1/n1_total).
-Hence the ORIGINAL engine implements the exact novelty term when called with
+Hence the ORIGINAL engine implements the novelty term when called with
 `use_epistemic=True, epistemic_weight=0.5`. No modification of the engine is
-needed; exactness is obtained by parameter choice, and the closed form is
-composition-independent (it depends only on the column totals).
+needed, and the closed form depends only on the column totals.
 
 Parameter choice (alpha_0 = 8). The corrected condition of Notebook 05,
     gamma * [G(tau; p) - N(tau; alpha_0)] = 1,   N = tau / (2 alpha_0 (1+tau)^2),
@@ -47,7 +46,7 @@ from sim_bifurcation import (run_single_agent, compute_efe_difference,
 OUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Figs")
 os.makedirs(OUT_DIR, exist_ok=True)
 
-### DT ---> Exact novelty = original heuristic with w = 1/2 (see docstring)
+### DT ---> Approx novelty = original heuristic with w = 1/2 (see docstring)
 NOVELTY_KWARGS = dict(use_epistemic=True, epistemic_weight=0.5)
 
 plt.rcParams.update({
@@ -121,7 +120,7 @@ def find_alpha0_c(gamma, p, a_lo=0.5, a_hi=64.0):
 # ============================================================================
 
 def plot_catastrophe_flags_novelty(alpha_0=8.0, p=0.85, gamma=16.0):
-    """Replicates the Figure-2 protocols with the exact novelty term ON."""
+    """Replicates the Figure-2 protocols with the \mathcal{N} (novelty term) ON."""
     fig = plt.figure(figsize=(15, 12))
     gs = GridSpec(3, 2, figure=fig, hspace=0.4, wspace=0.3)
 
@@ -189,7 +188,7 @@ def plot_catastrophe_flags_novelty(alpha_0=8.0, p=0.85, gamma=16.0):
     A_true = np.array([[p, 1 - p], [1 - p, p]])
 
     def novelty_diff(a1, b1, a2, b2):
-        ### DT ---> -Delta W = (1/2)(1/n2_total - 1/n1_total), exact (Notebook 05, Eq. 3)
+        ### DT ---> -Delta W = (1/2)(1/n2_total - 1/n1_total), (Notebook 05, Eq. 3)
         n1_total = a1 + b1
         n2_total = a2 + b2
         return 0.5 * (1.0 / n2_total - 1.0 / n1_total)
@@ -294,7 +293,7 @@ def plot_catastrophe_flags_novelty(alpha_0=8.0, p=0.85, gamma=16.0):
     ax2.legend(loc='upper right', fontsize=9)
 
     fig.suptitle(f'Figure A1: The Five Catastrophe Flags with the Novelty Term '
-                 f'(exact ΔW; α₀ = {alpha_0:.0f}, p = {p}, γ = {gamma:.0f})',
+                 f'(with ΔW on; α₀ = {alpha_0:.0f}, p = {p}, γ = {gamma:.0f})',
                  fontsize=15, y=1.01)
     plt.savefig(f"{OUT_DIR}/figA1_flags_novelty.png")
     plt.close()
@@ -359,7 +358,7 @@ def plot_verification_novelty(alpha_0=8.0, N_total=200, n_agents=200):
     ax.legend(fontsize=9)
 
     fig.suptitle('Figure A2: Stochastic Verification of the Novelty-Corrected '
-                 'Condition (exact ΔW switched on)', fontsize=15, y=1.03)
+                 'Condition (with ΔW switched on)', fontsize=15, y=1.03)
     plt.tight_layout()
     plt.savefig(f"{OUT_DIR}/figA2_verification_novelty.png")
     plt.close()
